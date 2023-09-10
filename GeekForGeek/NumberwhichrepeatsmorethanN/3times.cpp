@@ -3,43 +3,59 @@ using namespace std;
 #define turbo                         \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
-//User function Template for C++
+// User function Template for C++
 
-class Solution {
-  public:
-    int repeatNum(int arr[] ,int n) {
+class Solution
+{
+public:
+    int repeatNum(int arr[], int n)
+    {
         // code here
-        int cnt1=0,cnt2=0;
-        int candidate1=0,candidate2=0;
-        for(int i=0;i<n;i++){
-            if(candidate1 == arr[i]){
+        int cnt1 = 0, cnt2 = 0;
+        int candidate1 = 0, candidate2 = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (candidate1 == arr[i])
+            {
                 cnt1++;
-            }else if(candidate2 == arr[i]) {
+            }
+            else if (candidate2 == arr[i])
+            {
                 cnt2++;
             }
-            else if(cnt1==0){
+            else if (cnt1 == 0)
+            {
                 candidate1 = arr[i];
                 cnt1++;
             }
-            else if(cnt2==0){
+            else if (cnt2 == 0)
+            {
                 candidate2 = arr[i];
                 cnt2++;
             }
-            else{
+            else
+            {
                 cnt1--;
                 cnt2--;
             }
         }
         cnt1 = 0;
         cnt2 = 0;
-        for(int i=0;i<n;i++){
-            if(arr[i] == candidate1) cnt1++;
-            if(arr[i] == candidate2) cnt2++;
+        for (int i = 0; i < n; i++)
+        {
+            if (arr[i] == candidate1)
+                cnt1++;
+            if (arr[i] == candidate2)
+                cnt2++;
         }
-        if(cnt1 > n/3 && cnt2 > n/3) return min(candidate1,candidate2);
-        else if(cnt1>n/3) return candidate1;
-        else if(cnt2> n/3) return candidate2;
-        else return -1;
+        if (cnt1 > n / 3 && cnt2 > n / 3)
+            return min(candidate1, candidate2);
+        else if (cnt1 > n / 3)
+            return candidate1;
+        else if (cnt2 > n / 3)
+            return candidate2;
+        else
+            return -1;
     }
 };
 int main()
