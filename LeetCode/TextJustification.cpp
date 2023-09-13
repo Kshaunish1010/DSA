@@ -19,6 +19,7 @@ public:
         int space = (maxWidth - total);
         string temp = "";
         int y = space / x;
+        //even no. of spaces
         if (space % x == 0)
         {
             for (int k = i; k <= j; k++)
@@ -32,6 +33,7 @@ public:
                 }
             }
         }
+        // for uneven no. of spaces
         else
         {
             int z = space % x;
@@ -39,11 +41,13 @@ public:
             {
                 temp += words[k];
                 int c = y;
+                // if condition to even distribute the extra space on left side of line
                 if (z > 0)
                 {
                     temp += " ";
                     z--;
                 }
+                //the normal space calculated like in above if condition which can be evenly distributed
                 while (k != j && c > 0)
                 {
                     temp += " ";
@@ -75,6 +79,7 @@ public:
             }
             cnt -= words[j].size();
             j--;
+            //if word length equal to maxWidth
             if (i == j)
             {
                 string temp = "";
@@ -87,6 +92,7 @@ public:
                 }
                 ans.push_back(temp);
             }
+            //for last line
             else if (i < j && j == n - 1)
             {
                 string temp = "";
@@ -108,6 +114,7 @@ public:
                 }
                 ans.push_back(temp);
             }
+            //for other lines
             else
                 solve(i, j, words, maxWidth);
             j++;
