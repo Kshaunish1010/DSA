@@ -3,24 +3,31 @@ using namespace std;
 #define turbo                         \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
-class Solution {
+class Solution
+{
 public:
-    bool isPalindrome(string s) {
-        int start=0;
-        int end=s.length()-1;
-        while(start<=end){
-            if(!isalnum(s[start])){
+    bool isPalindrome(string s)
+    {
+        int start = 0;
+        int end = s.length() - 1;
+        while (start <= end)
+        {
+            if (!isalnum(s[start]))
+            {
                 start++;
                 continue;
             }
-            if(!isalnum(s[end])){
+            else if (!isalnum(s[end]))
+            {
                 end--;
                 continue;
             }
-            if(tolower(s[end])!=tolower(s[start])){
+            else if (tolower(s[start]) != tolower(s[end]))
+            {
                 return false;
             }
-            else{
+            else
+            {
                 start++;
                 end--;
             }
