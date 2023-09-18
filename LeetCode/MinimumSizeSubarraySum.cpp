@@ -7,22 +7,23 @@ using namespace std;
 class Solution
 {
 public:
-    string longestCommonPrefix(vector<string> &strs)
+    int minSubArrayLen(int target, vector<int> &nums)
     {
-        sort(strs.begin(), strs.end());
-        string ans = "";
-        string a = strs[0];
-        string b = strs[strs.size() - 1];
-        for (int i = 0; i < a.size(); i++)
+        int n = nums.size();
+        int i = 0, j = 0;
+        int sum = 0, ans = INT_MAX;
+        while (j < n)
         {
-            if (a[i] == b[i])
+            sum += nums[j];
+            while (sum >= target)
             {
-                ans += a[i];
+                ans = min(ans, (j - i + 1));
+                sum -= nums[i];
+                i++;
             }
-            else
-                break;
+            j++;
         }
-        return ans;
+        return (ans == INT_MAX) ? 0 : ans;
     }
 };
 

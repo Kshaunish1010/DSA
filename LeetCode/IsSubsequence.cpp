@@ -7,22 +7,22 @@ using namespace std;
 class Solution
 {
 public:
-    string longestCommonPrefix(vector<string> &strs)
+    int n, m;
+    bool solve(string s, string t, int i, int j)
     {
-        sort(strs.begin(), strs.end());
-        string ans = "";
-        string a = strs[0];
-        string b = strs[strs.size() - 1];
-        for (int i = 0; i < a.size(); i++)
-        {
-            if (a[i] == b[i])
-            {
-                ans += a[i];
-            }
-            else
-                break;
-        }
-        return ans;
+        if (j == m)
+            return 1;
+        if (i == n)
+            return 0;
+        if (s[j] == t[i])
+            return solve(s, t, i + 1, j + 1);
+        else
+            return solve(s, t, i + 1, j);
+    }
+    bool isSubsequence(string s, string t)
+    {
+        n = t.length(), m = s.length();
+        return solve(s, t, 0, 0);
     }
 };
 

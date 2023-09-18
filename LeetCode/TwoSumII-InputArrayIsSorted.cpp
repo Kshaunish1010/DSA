@@ -7,20 +7,23 @@ using namespace std;
 class Solution
 {
 public:
-    string longestCommonPrefix(vector<string> &strs)
+    vector<int> twoSum(vector<int> &numbers, int target)
     {
-        sort(strs.begin(), strs.end());
-        string ans = "";
-        string a = strs[0];
-        string b = strs[strs.size() - 1];
-        for (int i = 0; i < a.size(); i++)
+        int l = 0, r = numbers.size() - 1;
+        vector<int> ans(2);
+        while (l < r)
         {
-            if (a[i] == b[i])
+            int sum = numbers[l] + numbers[r];
+            if (sum == target)
             {
-                ans += a[i];
+                ans[0] = l;
+                ans[1] = r;
+                return ans;
             }
-            else
-                break;
+            if (sum < target)
+                l++;
+            if (sum > target)
+                r--;
         }
         return ans;
     }

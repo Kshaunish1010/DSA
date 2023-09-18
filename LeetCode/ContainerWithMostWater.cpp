@@ -7,22 +7,22 @@ using namespace std;
 class Solution
 {
 public:
-    string longestCommonPrefix(vector<string> &strs)
+    int maxArea(vector<int> &height)
     {
-        sort(strs.begin(), strs.end());
-        string ans = "";
-        string a = strs[0];
-        string b = strs[strs.size() - 1];
-        for (int i = 0; i < a.size(); i++)
+        int l = 0;
+        int n = height.size();
+        int r = n - 1;
+        int area = INT_MIN;
+        while (l < r)
         {
-            if (a[i] == b[i])
-            {
-                ans += a[i];
-            }
+            int mini = min(height[l], height[r]);
+            area = max(area, mini * (r - l));
+            if (height[l] <= height[r])
+                l++;
             else
-                break;
+                r--;
         }
-        return ans;
+        return area;
     }
 };
 
