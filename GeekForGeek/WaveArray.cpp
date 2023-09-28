@@ -7,10 +7,20 @@ using namespace std;
 class Solution
 {
 public:
-    string nextClosestTime(string time)
+    // arr: input array
+    // n: size of array
+    // Function to sort the array into a wave-like array.
+    void convertToWave(int n, vector<int> &arr)
     {
-        
-        // Code here
+        for (int i = 0; i < n; i++)
+        {
+            if (i % 2 == 0 && i + 1 < n)
+            {
+                swap(arr[i], arr[i + 1]);
+                i++;
+            }
+        }
+        // Your code here
     }
 };
 

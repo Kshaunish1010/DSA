@@ -7,10 +7,13 @@ using namespace std;
 class Solution
 {
 public:
-    string nextClosestTime(string time)
+    int safePos(int n, int k)
     {
-        
-        // Code here
+        // code here
+        if (n == 1)
+            return 1;
+        else
+            return (safePos(n - 1, k) + k - 1) % n + 1;
     }
 };
 
